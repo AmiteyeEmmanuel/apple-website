@@ -1,10 +1,15 @@
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Highlights from "./components/Highlights";
 
 const App = () => {
 
   return (
-    <div className=" text-5xl text-red-500">
-        <h1> Project 2</h1>
-    </div>
+    <main className=" bg-black">
+       <Navbar/>
+       <Hero/>
+       <Highlights/>
+    </main>
   )
 }
 
