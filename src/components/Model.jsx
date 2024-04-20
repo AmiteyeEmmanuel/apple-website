@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { models, sizes } from "../constants";
-// import { animateWithGsapTimeline } from "../utils/animations";
+import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
   const [size, setSize] = useState('small');
@@ -32,7 +32,21 @@ const Model = () => {
 
   const tl = gsap.timeline();
 
+  useEffect(() => {
+    if(size === 'large') {
+      animateWithGsapTimeline(tl, small, smallRotation, '#view1', '#view2', {
+        transform: 'translateX(-100%)',
+        duration: 1.5
+      })
+    }
 
+    if(size ==='small') {
+      animateWithGsapTimeline(tl, large, largeRotation, '#view2', '#view1', {
+        transform: 'translateX(0)',
+        duration: 1.5
+      })
+    }
+  }, [size])
 
   useGSAP(() => {
     gsap.to('#heading', { y: 0, opacity: 1 })
@@ -89,15 +103,13 @@ const Model = () => {
             <div className="flex-center">
               <ul className="color-container">
                 {models.map((item, i) => (
-                  <li key={i} className="w-6 h-6 rounded-full mx-2 cursor-pointer" 
-                  style={{ backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
+                  <li key={i} className="w-6 h-6 rounded-full mx-2 cursor-pointer" style={{ backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
                 ))}
               </ul>
 
               <button className="size-btn-container">
                 {sizes.map(({ label, value }) => (
-                  <span key={label} className="size-btn" 
-                  style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
+                  <span key={label} className="size-btn" style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
                     {label}
                   </span>
                 ))}
