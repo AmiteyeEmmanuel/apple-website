@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Highlights() {
+const Highlights = () => {
   return (
-    <div>Highlights</div>
+    <div>
+      High
+    </div>
   )
 }
 
