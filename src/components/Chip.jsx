@@ -13,9 +13,9 @@ const Chip = () => {
         trigger: '#chip',
         start: '20% bottom'
       },
-      opacity: 0,
+      opacity: 1,
       scale: 2,
-      duration: 2,
+      duration: 6,
       ease: 'power2.inOut'
     })
 
@@ -30,7 +30,7 @@ const Chip = () => {
   return (
     <section className="common-padding">
       <div className="screen-max-width">
-        <div id="chip" className="flex-center w-full my-20">
+        <div id="chip" className="flex-center w-full my-20 py-10">
           <img src={chipImg} alt="chip" width={180} height={180} />
         </div>
 
